@@ -1,0 +1,38 @@
+sudo: false
+language: php
+
+php:
+  - nightly
+
+matrix:
+  include:
+    - php: '5.6'
+      env:
+        - COMPOSER_FLAGS='--prefer-lowest'
+        - LARAVEL_VERSION='~5.0.0'
+    - php: '7.0'
+      env: LARAVEL_VERSION='~5.1.0'
+    - php: '7.0'
+      env: LARAVEL_VERSION='~5.3.0@dev'
+  allow_failures:
+    - php: nightly
+  fast_finish: true
+
+cache:
+  directories:
+    - "$HOME/.composer/cache"
+
+services:
+  - mysql
+
+before_install:
+  - |
+    if [ "$LARAVEL_VERSION" != "" ]; then
+      composer require "laravel/framework:${LARAVEL_VERSION}" --no-update
+    fi
+
+install:
+  - composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
+
+notifications:
+    email: false
