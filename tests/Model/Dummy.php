@@ -42,6 +42,13 @@ class Dummy extends EloquentModel
     /**
      * @inheritdoc
      */
+    protected $visible = [
+        'inexistent_visible_property',
+    ];
+
+    /**
+     * @inheritdoc
+     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -49,6 +56,13 @@ class Dummy extends EloquentModel
     
     protected $casts = [
         'casted_bool' => 'boolean',
+    ];
+
+    /**
+     * @inheritdoc
+     */
+    protected $appends = [
+        'inexistent_appended_property',
     ];
 
     /**

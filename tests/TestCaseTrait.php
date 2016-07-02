@@ -78,6 +78,7 @@ trait TestCaseTrait
             'email' => 'vbrekke@example.com',
             'casted_bool' => true,
             'created_at' => '2016-07-02T12:28:14+00:00',
+            'inexistent_visible_property' => null,
         ];
         $actual = $this->serializer->normalize($user);
 
@@ -111,6 +112,7 @@ trait TestCaseTrait
             'email' => 'amanda.harber@example.com',
             // 'casted_bool' => null
             'created_at' => '2016-07-02T12:28:14+00:00',
+            'inexistent_visible_property' => null,
             'anotherDummy' => [
                 'id' => 200,
                 'address' => "TechHub @ Campus4-5 Bonhill Street\nLondon EC2A 4BX\nUnited Kingdom",

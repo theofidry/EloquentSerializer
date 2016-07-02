@@ -30,6 +30,11 @@ class EloquentModelNormalizer extends ObjectNormalizer
      */
     protected $propertyAccessor;
 
+    /**
+     * @var \ReflectionMethod
+     */
+    private $arrayablePropertiesRefl;
+
     public function __construct(
         ClassMetadataFactoryInterface $classMetadataFactory = null,
         NameConverterInterface $nameConverter = null,
@@ -41,6 +46,9 @@ class EloquentModelNormalizer extends ObjectNormalizer
         }
         
         parent::__construct($classMetadataFactory, $nameConverter, $propertyAccessor, $propertyTypeExtractor);
+
+        $this->arrayablePropertiesRefl = (new \ReflectionClass(Model::class))->getMethod('getArrayableItems');
+        $this->arrayablePropertiesRefl->setAccessible(true);
     }
 
     /**
@@ -51,10 +59,8 @@ class EloquentModelNormalizer extends ObjectNormalizer
     protected function extractAttributes($object, $format = null, array $context = array())
     {
         $attributes = $object->getAttributes();
-        $object->getHidden();
-
-        foreach ($object->getHidden() as $hiddenAttribute) {
-            unset($attributes[$hiddenAttribute]);
+        if (count($object->getVisible()) > 0) {
+            $attributes = array_merge($attributes, array_flip($object->getVisible()));
         }
 
         /* @var Model[] $relations */
@@ -63,6 +69,8 @@ class EloquentModelNormalizer extends ObjectNormalizer
             unset($attributes[$relation->getForeignKey()]);
             $attributes[$relationName] = true;
         }
+
+        $attributes = array_diff_key($attributes, array_flip($object->getHidden()));
 
         return array_keys($attributes);
     }

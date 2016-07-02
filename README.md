@@ -69,7 +69,7 @@ $normalizedDummy = Serializer::normalize($dummy);
  *     'created_at' => '2016-07-02T12:28:14+00:00',
  * ];
  */
-``
+```
 
 ## License
 
