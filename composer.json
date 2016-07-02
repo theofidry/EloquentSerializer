@@ -1,6 +1,13 @@
 {
-    "name": "theofidry/laravel-serializer",
-    "description": "Laravel provider for the Symfony Serializer.",
+    "name": "theofidry/eloquent-serializer",
+    "description": "Symfony Serializer bridge for the Eloquent ORM.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Théo FIDRY",
+            "email": "theo.fidry@gmail.com"
+        }
+    ],
     "type": "laravel-provider",
     "require": {
         "php": "^5.6.0||^7.0",
@@ -12,13 +19,12 @@
         "doctrine/dbal": "^2.5",
         "laravel/framework": "^5.0"
     },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Théo FIDRY",
-            "email": "theo.fidry@gmail.com"
-        }
-    ],
+    "autoload": {
+        "psr-4": { "Fidry\\LaravelSerializerSymfony\\": "src" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Fidry\\LaravelSerializerSymfony\\": "tests" }
+    },
     "config": {
         "sort-packages": true
     }

@@ -9,13 +9,14 @@
  * file that was distributed with this source code.
  */
 
-return [
-    'default' => 'local',
-    'cloud' => 'local',
-    'disks' => [
-        'local' => [
-            'driver' => 'local',
-            'root' => storage_path('app'),
-        ],
-    ],
-];
+namespace Fidry\LaravelSerializer\Fixtures\LaravelApp;
+
+use Illuminate\Foundation\Console\Kernel;
+
+/**
+ * @author Théo FIDRY <theo.fidry@gmail.com>
+ */
+final class ConsoleKernel extends Kernel
+{
+    protected $commands = [];
+}

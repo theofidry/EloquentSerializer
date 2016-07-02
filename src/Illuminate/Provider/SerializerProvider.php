@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Provider;
+namespace Fidry\LaravelSerializerSymfony\Illuminate\Provider;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
