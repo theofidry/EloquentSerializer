@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-$app = new \Fidry\LaravelSerializer\Fixtures\LaravelApp\Application(
+$app = new \Fidry\EloquentSerializer\Fixtures\LaravelApp\Application(
     realpath(__DIR__)
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Fidry\LaravelSerializer\Fixtures\LaravelApp\ConsoleKernel::class
+    Fidry\EloquentSerializer\Fixtures\LaravelApp\ConsoleKernel::class
 );
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,

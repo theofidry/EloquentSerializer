@@ -1,6 +1,6 @@
 <?php
 
-namespace Fidry\LaravelSerializerSymfony\Model;
+namespace Fidry\EloquentSerializer\Model;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 

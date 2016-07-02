@@ -1,6 +1,6 @@
 <?php
 
-namespace Fidry\LaravelSerializerSymfony\Illuminate\Provider;
+namespace Fidry\EloquentSerializer\Illuminate\Provider;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
@@ -23,7 +23,7 @@ final class SerializerProvider extends IlluminateServiceProvider
 
         $this->app->singleton(
             'serializer.normalizer.eloquent_model',
-            \Fidry\LaravelSerializerSymfony\Serializer\Normalizer\EloquentModelNormalizer::class
+            \Fidry\EloquentSerializer\Symfony\Serializer\Normalizer\EloquentModelNormalizer::class
         );
         $this->app->tag('serializer.normalizer.eloquent_model', 'serializer.normalizer');
 

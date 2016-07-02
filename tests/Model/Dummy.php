@@ -1,6 +1,6 @@
 <?php
 
-namespace Fidry\LaravelSerializerSymfony\Model;
+namespace Fidry\EloquentSerializer\Model;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model as EloquentModel;
  * @property \DateTimeInterface created_at
  * @property string             password
  * @property string             remember_token
+ * @property AnotherDummy       anotherDummy
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
@@ -40,7 +41,7 @@ class Dummy extends EloquentModel
      */
     public $timestamps = false;
 
-    public function address()
+    public function anotherDummy()
     {
         return $this->belongsTo(AnotherDummy::class);
     }

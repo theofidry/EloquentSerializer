@@ -25,7 +25,7 @@ return [
         \Illuminate\Filesystem\FilesystemServiceProvider::class,
         \Illuminate\Foundation\Providers\FoundationServiceProvider::class,
         \Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
-        \Fidry\LaravelSerializerSymfony\Illuminate\Provider\SerializerProvider::class,
+        \Fidry\EloquentSerializer\Illuminate\Provider\SerializerProvider::class,
     ],
     'aliases' => [],
 ];

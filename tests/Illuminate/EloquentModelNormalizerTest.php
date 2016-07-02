@@ -1,8 +1,8 @@
 <?php
 
-namespace Fidry\LaravelSerializerSymfony\Illuminate;
+namespace Fidry\EloquentSerializer\Illuminate;
 
-use Fidry\LaravelSerializerSymfony\TestCaseTrait;
+use Fidry\EloquentSerializer\TestCaseTrait;
 use Illuminate\Foundation\Testing\TestCase as IlluminateTestCase;
 
 class EloquentModelNormalizerTest extends IlluminateTestCase

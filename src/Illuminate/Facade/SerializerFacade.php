@@ -1,6 +1,6 @@
 <?php
 
-namespace Fidry\LaravelSerializerSymfony\Illuminate\Facade;
+namespace Fidry\EloquentSerializer\Illuminate\Facade;
 
 use Illuminate\Support\Facades\Facade as IlluminateFacade;
 

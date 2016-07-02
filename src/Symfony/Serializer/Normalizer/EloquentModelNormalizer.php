@@ -1,8 +1,8 @@
 <?php
 
-namespace Fidry\LaravelSerializerSymfony\Serializer\Normalizer;
+namespace Fidry\EloquentSerializer\Symfony\Serializer\Normalizer;
 
-use Fidry\LaravelSerializerSymfony\PropertyAccess\EloquentModelPropertyAccessor;
+use Fidry\EloquentSerializer\Symfony\PropertyAccess\EloquentModelPropertyAccessor;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;

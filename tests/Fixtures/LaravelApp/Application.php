@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\LaravelSerializer\Fixtures\LaravelApp;
+namespace Fidry\EloquentSerializer\Fixtures\LaravelApp;
 
 use Illuminate\Foundation\Application as IlluminateFoundationApplication;
 

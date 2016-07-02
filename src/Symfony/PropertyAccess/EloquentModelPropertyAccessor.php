@@ -1,6 +1,6 @@
 <?php
 
-namespace Fidry\LaravelSerializerSymfony\PropertyAccess;
+namespace Fidry\EloquentSerializer\Symfony\PropertyAccess;
 
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\PropertyAccess\Exception;
