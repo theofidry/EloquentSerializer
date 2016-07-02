@@ -1,4 +1,4 @@
 composer.lock
 vendor/
 /bin/phpunit.phar
-/tests/Fixtures/LaravelApp/database/database.sqlite
+/tests/Fixtures/database.sqlite

@@ -28,6 +28,7 @@ before_install:
     if [ "$LARAVEL_VERSION" != "" ]; then
       composer require "laravel/framework:${LARAVEL_VERSION}" --no-update
     fi
+  - touch tests/Fixtures/database.sqlite
 
 install:
   - composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
