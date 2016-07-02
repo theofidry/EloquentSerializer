@@ -23,6 +23,7 @@ cache:
     - "$HOME/.composer/cache"
 
 before_install:
+  - phpenv config-rm xdebug.ini;
   - |
     if [ "$LARAVEL_VERSION" != "" ]; then
       composer require "laravel/framework:${LARAVEL_VERSION}" --no-update
