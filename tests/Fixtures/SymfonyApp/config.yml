@@ -1,0 +1,32 @@
+#
+# This file is part of the EloquentSerializer package.
+#
+# (c) Théo FIDRY <theo.fidry@gmail.com>
+#
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
+#
+
+framework:
+    secret: FidryEloquentSerializerBundleSecret
+    router:
+        resource: ~
+        strict_requirements: '%kernel.debug%'
+    trusted_proxies: ~
+    test: ~
+    serializer:
+        enabled: true
+    session:
+        storage_id: session.storage.mock_file
+
+wouterj_eloquent:
+    connections:
+        sqlite:
+            driver: sqlite
+            host: local
+            database: '%kernel.root_dir%/../database.sqlite'
+            username: root
+            password: ~
+            prefix: ~
+    default_connection: sqlite
+    eloquent: true
