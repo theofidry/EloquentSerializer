@@ -22,9 +22,6 @@ cache:
   directories:
     - "$HOME/.composer/cache"
 
-services:
-  - mysql
-
 before_install:
   - |
     if [ "$LARAVEL_VERSION" != "" ]; then
@@ -33,6 +30,7 @@ before_install:
 
 install:
   - composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
+  - php bin/artisan migrate
 
 notifications:
     email: false

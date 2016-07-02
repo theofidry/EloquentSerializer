@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade as IlluminateFacade;
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-final class SerializerFacade extends IlluminateFacade
+final class Serializer extends IlluminateFacade
 {
     /**
      * @inheritdoc
