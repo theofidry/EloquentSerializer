@@ -31,7 +31,7 @@ before_install:
 
 install:
   - composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
-  - php bin/artisan migrate
+  - php bin/artisan migrate --force
 
 notifications:
     email: false
