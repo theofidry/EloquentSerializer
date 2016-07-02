@@ -66,6 +66,7 @@ trait TestCaseTrait
             'id' => 100,
             'name' => 'Gunner Runte',
             'email' => 'vbrekke@example.com',
+            'casted_bool' => 1,
             'password' => '$2y$10$j/R4kRrymk3wMXwohvoRou2zBKJZVecr1VON.9NnSXu24k6CP6tDe',
             'remember_token' => 'PhiasHkmCh',
             'created_at' => new Carbon('2016-07-02T12:28:14+00:00'),
@@ -75,6 +76,7 @@ trait TestCaseTrait
             'id' => 100,
             'name' => 'Gunner Runte',
             'email' => 'vbrekke@example.com',
+            'casted_bool' => true,
             'created_at' => '2016-07-02T12:28:14+00:00',
         ];
         $actual = $this->serializer->normalize($user);
@@ -107,6 +109,7 @@ trait TestCaseTrait
             'id' => 102,
             'name' => 'Dr. Eldred Kuvalis PhD',
             'email' => 'amanda.harber@example.com',
+            // 'casted_bool' => null
             'created_at' => '2016-07-02T12:28:14+00:00',
             'anotherDummy' => [
                 'id' => 200,

@@ -23,6 +23,8 @@ class EloquentModelNormalizerTest extends KernelTestCase
 
     public function setUp()
     {
+        $this->markTestSkipped('Not supported yet.');
+
         parent::setUp();
         static::bootKernel();
 

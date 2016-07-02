@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model as EloquentModel;
  * @property int                id
  * @property string             name
  * @property string             email
+ * @property bool               casted_bool
  * @property \DateTimeInterface created_at
  * @property string             password
  * @property string             remember_token
@@ -33,6 +34,7 @@ class Dummy extends EloquentModel
         'id',
         'name',
         'email',
+        'casted_bool',
         'password',
         'created_at',
     ];
@@ -43,6 +45,10 @@ class Dummy extends EloquentModel
     protected $hidden = [
         'password',
         'remember_token',
+    ];
+    
+    protected $casts = [
+        'casted_bool' => 'boolean',
     ];
 
     /**

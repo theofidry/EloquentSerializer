@@ -30,6 +30,7 @@ class CreateDummiesTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->tinyInteger('casted_bool')->nullable();
             $table->rememberToken();
             $table->timestamp('created_at')->nullable();
         });

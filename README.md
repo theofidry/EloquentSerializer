@@ -3,7 +3,7 @@
 [![Package version](http://img.shields.io/packagist/v/theofidry/eloquent-serializer.svg?style=flat-square)](https://packagist.org/packages/theofidry/eloquent-serializer)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](LICENSE)
 
-Package to allow Symfony Serializer to work on Eloquent models.
+Package to allow [Symfony Serializer][1] to work on Eloquent models.
 
 ## Install
 
@@ -67,12 +67,12 @@ $normalizedDummy = Serializer::normalize($dummy);
  *     'name' => 'Gunner Runte',
  *     'email' => 'vbrekke@example.com',
  *     'created_at' => '2016-07-02T12:28:14+00:00',
- */ ];
-```
+ * ];
+ */
+``
 
 ## License
 
 [![license](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](LICENSE)
 
-[1]: http://psysh.org/
-[2]: http://symfony.com/
+[1]: http://symfony.com/doc/current/components/serializer.html
