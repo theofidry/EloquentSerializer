@@ -8,10 +8,10 @@ matrix:
   include:
     - php: '5.6'
       env:
+        - LARAVEL_VERSION='~5.2.30'
         - COMPOSER_FLAGS='--prefer-lowest'
-        - LARAVEL_VERSION='~5.0.0'
     - php: '7.0'
-      env: LARAVEL_VERSION='~5.1.0'
+      env: LARAVEL_VERSION='~5.2.0'
     - php: '7.0'
       env: LARAVEL_VERSION='~5.3.0@dev'
   allow_failures:
