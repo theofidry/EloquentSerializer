@@ -62,7 +62,7 @@ trait TestCaseTrait
 
     public function testNormalizeEloquentObject()
     {
-        $user = Dummy::create([
+        $dummy = Dummy::create([
             'id' => 100,
             'name' => 'Gunner Runte',
             'email' => 'vbrekke@example.com',
@@ -80,14 +80,14 @@ trait TestCaseTrait
             'created_at' => '2016-07-02T12:28:14+00:00',
             'inexistent_visible_property' => null,
         ];
-        $actual = $this->serializer->normalize($user);
+        $actual = $this->serializer->normalize($dummy);
 
         PHPUnit::assertSame($expected, $actual);
     }
 
     public function testNormalizeEloquentObjectWithRelation()
     {
-        $address = AnotherDummy::create([
+        $anotherDummy = AnotherDummy::create([
             'id' => 200,
             'address' => "TechHub @ Campus"
                 ."4-5 Bonhill Street\n"
@@ -95,7 +95,7 @@ trait TestCaseTrait
                 ."United Kingdom"
         ]);
 
-        $user = Dummy::create([
+        $dummy = Dummy::create([
             'id' => 102,
             'name' => 'Dr. Eldred Kuvalis PhD',
             'email' => 'amanda.harber@example.com',
@@ -103,8 +103,8 @@ trait TestCaseTrait
             'remember_token' => 'JyeiFq4y3C',
             'created_at' => new Carbon('2016-07-02 12:28:14'),
         ]);
-        $user->anotherDummy()->associate($address);
-        $user->save();
+        $dummy->anotherDummy()->associate($anotherDummy);
+        $dummy->save();
 
         $expected = [
             'id' => 102,
@@ -118,8 +118,87 @@ trait TestCaseTrait
                 'address' => "TechHub @ Campus4-5 Bonhill Street\nLondon EC2A 4BX\nUnited Kingdom",
             ],
         ];
-        $actual = $this->serializer->normalize($user);
+        $actual = $this->serializer->normalize($dummy);
 
         PHPUnit::assertSame($expected, $actual);
+    }
+
+    public function testDenormalizeEloquentObject()
+    {
+        $data = [
+            'id' => 200,
+            'name' => 'Gunner Runte',
+            'email' => 'vbrekke@example.com',
+            'casted_bool' => 0,
+            'password' => '$2y$10$j/R4kRrymk3wMXwohvoRou2zBKJZVecr1VON.9NnSXu24k6CP6tDe',
+            'remember_token' => 'PhiasHkmCh',
+            'created_at' => '2016-07-02T12:28:14+00:00',
+        ];
+
+        /** @var Dummy $dummy */
+        $dummy = $this->serializer->denormalize($data, Dummy::class);
+
+        PHPUnit::assertInstanceOf(Dummy::class, $dummy);
+        PHPUnit::assertEquals(200, $dummy->id);
+        PHPUnit::assertEquals('Gunner Runte', $dummy->name);
+        PHPUnit::assertEquals('vbrekke@example.com', $dummy->email);
+        PHPUnit::assertEquals('$2y$10$j/R4kRrymk3wMXwohvoRou2zBKJZVecr1VON.9NnSXu24k6CP6tDe', $dummy->password);
+        PHPUnit::assertEquals('PhiasHkmCh', $dummy->remember_token);
+        PHPUnit::assertEquals(false, $dummy->casted_bool);
+        PHPUnit::assertEquals(new Carbon('2016-07-02T12:28:14+00:00'), $dummy->created_at);
+    }
+
+    public function testDenormalizeEloquentObjectWithNonHydratedRelation()
+    {
+        $data = [
+            'id' => 200,
+            'name' => 'Gunner Runte',
+            'email' => 'vbrekke@example.com',
+            'casted_bool' => 0,
+            'password' => '$2y$10$j/R4kRrymk3wMXwohvoRou2zBKJZVecr1VON.9NnSXu24k6CP6tDe',
+            'remember_token' => 'PhiasHkmCh',
+            'created_at' => '2016-07-02T12:28:14+00:00',
+            'another_dummy' => 500,
+        ];
+
+        /** @var Dummy $dummy */
+        $dummy = $this->serializer->denormalize($data, Dummy::class);
+
+        PHPUnit::assertInstanceOf(Dummy::class, $dummy);
+        PHPUnit::assertEquals(200, $dummy->id);
+        PHPUnit::assertEquals('Gunner Runte', $dummy->name);
+        PHPUnit::assertEquals('vbrekke@example.com', $dummy->email);
+        PHPUnit::assertEquals('$2y$10$j/R4kRrymk3wMXwohvoRou2zBKJZVecr1VON.9NnSXu24k6CP6tDe', $dummy->password);
+        PHPUnit::assertEquals('PhiasHkmCh', $dummy->remember_token);
+        PHPUnit::assertEquals(false, $dummy->casted_bool);
+        PHPUnit::assertEquals(new Carbon('2016-07-02T12:28:14+00:00'), $dummy->created_at);
+        PHPUnit::assertEquals(500, $dummy->another_dummy_id);
+        PHPUnit::assertEquals(0, count($dummy->getRelations()));
+    }
+
+    public function testDenormalizeEloquentObjectWithRelation()
+    {
+        $data = [
+            'id' => 200,
+            'another_dummy' => [
+                'id' => 500,
+                'address' => "TechHub @ Campus4-5 Bonhill Street\nLondon EC2A 4BX\nUnited Kingdom",
+            ],
+        ];
+
+        /** @var Dummy $dummy */
+        $dummy = $this->serializer->denormalize($data, Dummy::class);
+
+        PHPUnit::assertInstanceOf(Dummy::class, $dummy);
+        PHPUnit::assertEquals(200, $dummy->id);
+        PHPUnit::assertEquals(1, count($dummy->getRelations()));
+
+        $anotherDummy = $dummy->anotherDummy;
+        PHPUnit::assertInstanceOf(AnotherDummy::class, $anotherDummy);
+        PHPUnit::assertEquals(500, $anotherDummy->id);
+        PHPUnit::assertEquals(
+            "TechHub @ Campus4-5 Bonhill Street\nLondon EC2A 4BX\nUnited Kingdom",
+            $anotherDummy->address
+        );
     }
 }

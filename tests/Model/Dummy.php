@@ -70,6 +70,13 @@ class Dummy extends EloquentModel
      */
     public $timestamps = false;
 
+    /**
+     * @inheritdoc
+     */
+    protected $dates = [
+        'created_at',
+    ];
+
     public function anotherDummy()
     {
         return $this->belongsTo(AnotherDummy::class);
