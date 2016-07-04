@@ -14,8 +14,16 @@ matrix:
       env: LARAVEL_VERSION='~5.2.0'
     - php: '7.0'
       env: LARAVEL_VERSION='~5.3.0@dev'
+    - php: '5.6'
+      env:
+        - SYMFONY_VERSION='~3.1.0'
+        - COMPOSER_FLAGS='--prefer-lowest'
+    - php: '7.0'
+      env: SYMFONY_VERSION='~3.2.0@dev'
   allow_failures:
     - php: nightly
+    - env: LARAVEL_VERSION='~5.3.0@dev'
+    - env: SYMFONY_VERSION='~3.2.0@dev'
   fast_finish: true
 
 cache:
@@ -27,6 +35,8 @@ before_install:
   - |
     if [ "$LARAVEL_VERSION" != "" ]; then
       composer require "laravel/framework:${LARAVEL_VERSION}" --no-update
+    else [ "$SYMFONY_VERSION" != "" ]; then
+      composer require "symfony/symfony:${SYMFONY_VERSION}" --no-update
     fi
   - touch tests/Fixtures/database.sqlite
 
