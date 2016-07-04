@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="fidry_eloquent_serializer.eloquent_property_accessor" class="Fidry\EloquentSerializer\Symfony\PropertyAccess\EloquentModelPropertyAccessor">
+            <argument type="service" id="serializer.property_accessor" />
+        </service>
+
+        <service id="fidry_eloquent_serializer.normalizer.date_time" class="Symfony\Component\Serializer\Normalizer\DateTimeNormalizer">
+            <tag name="serializer.normalizer" priority="-980" />
+        </service>
+
+        <service id="fidry_eloquent_serializer.normalizer.eloquent_model" class="Fidry\EloquentSerializer\Symfony\Serializer\Normalizer\EloquentModelNormalizer">
+            <argument type="service" id="serializer.mapping.class_metadata_factory" />
+            <argument>null</argument> <!-- name converter -->
+            <argument type="service" id="fidry_eloquent_serializer.eloquent_property_accessor" />
+
+            <!-- Run after all custom serializers but before object normalizer -->
+            <tag name="serializer.normalizer" priority="-990" />
+        </service>
+    </services>
+</container>

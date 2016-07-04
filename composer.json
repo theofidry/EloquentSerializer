@@ -17,7 +17,7 @@
     },
     "require-dev": {
         "doctrine/dbal": "^2.5",
-        "laravel/framework": "^5.0",
+        "laravel/framework": "^5.2.30",
         "symfony/framework-bundle": "^2.8||^3.0",
         "symfony/yaml": "^3.1",
         "wouterj/eloquent-bundle": "^0.2.2"

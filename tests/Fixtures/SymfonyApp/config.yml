@@ -21,12 +21,11 @@ framework:
 
 wouterj_eloquent:
     connections:
-        sqlite:
+        default:
             driver: sqlite
             host: local
             database: '%kernel.root_dir%/../database.sqlite'
             username: root
             password: ~
             prefix: ~
-    default_connection: sqlite
     eloquent: true

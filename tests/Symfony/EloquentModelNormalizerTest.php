@@ -23,10 +23,9 @@ class EloquentModelNormalizerTest extends KernelTestCase
 
     public function setUp()
     {
-        $this->markTestSkipped('Not supported yet.');
-
         parent::setUp();
         static::bootKernel();
+        static::$kernel->getContainer()->get('wouterj_eloquent.initializer')->initialize();
 
         $this->serializer = static::$kernel->getContainer()->get('serializer');
     }
