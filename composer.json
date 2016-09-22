@@ -10,7 +10,7 @@
     ],
     "type": "laravel-provider",
     "require": {
-        "php": "^5.6.0||^7.0",
+        "php": ">=5.6.0 <7.2",
         "symfony/property-access": "^2.8||^3.0",
         "symfony/property-info": "^2.8||^3.0",
         "symfony/serializer": "^3.1"
@@ -32,14 +32,6 @@
                 "tests"
             ]
         }
-    },
-    "scripts": {
-        "post-update-cmd": [
-            "@composer bin all update --ansi"
-        ],
-        "post-install-cmd": [
-            "@composer bin all install --ansi"
-        ]
     },
     "config": {
         "sort-packages": true

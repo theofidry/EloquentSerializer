@@ -1,11 +1,12 @@
-sudo: false
 language: php
 
 php:
+  - '7.1'
   - nightly
 
 matrix:
   include:
+    # Laravel
     - php: '5.6'
       env:
         - LARAVEL_VERSION='~5.2.30'
@@ -14,6 +15,8 @@ matrix:
       env: LARAVEL_VERSION='~5.2.0'
     - php: '7.0'
       env: LARAVEL_VERSION='~5.3.0@dev'
+
+    # Symfony
     - php: '5.6'
       env:
         - SYMFONY_VERSION='~3.1.0'
@@ -31,19 +34,49 @@ cache:
     - "$HOME/.composer/cache"
 
 before_install:
-  - phpenv config-rm xdebug.ini;
+  # From https://github.com/travis-ci/travis-ci/issues/5780#issuecomment-196308406
   - |
-    if [ "$LARAVEL_VERSION" != "" ]; then
-      composer require "laravel/framework:${LARAVEL_VERSION}" --no-update
-    elif [ "$SYMFONY_VERSION" != "" ]; then
-      composer remove --dev laravel/framework
-      composer require "symfony/framework-bundle:${SYMFONY_VERSION}" --no-update
+    XDEBUG_INI="/home/travis/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini"
+    if [ ! -f "$XDEBUG_INI" ]; then
+        return
     fi
-  - touch tests/Fixtures/database.sqlite
+    function composer()
+    {
+      mv $XDEBUG_INI ~/xdebug.ini
+      COMPOSER="$(which composer)"
+      $COMPOSER "$@"
+      STATUS=$?
+      mv ~/xdebug.ini $XDEBUG_INI
+
+      return $STATUS
+    }
+  - |
+    if [ "$TRAVIS_PHP_VERSION" = 'nightly' ]; then
+      COMPOSER_FLAGS="$COMPOSER_FLAGS --ingore-platform-reqs"
+    fi
 
 install:
   - composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
-  - php bin/artisan migrate --force
+  - |
+    if [ "$LARAVEL_VERSION" != "" ]; then
+      composer bin laravel require "laravel/framework:${LARAVEL_VERSION}" --no-update
+    elif [ "$SYMFONY_VERSION" != "" ]; then
+      composer bin symfony require "symfony/symfony:${SYMFONY_VERSION}" --no-update
+    else
+      return
+    fi
+  - composer bin all update --prefer-dist --no-interaction $COMPOSER_FLAGS
+  - bin/setup.sh
+
+script:
+  - |
+    if [ "$LARAVEL_VERSION" != "" ]; then
+      vendor-bin/laravel/vendor/bin/phpunit -c phpunit_laravel.xml.dist
+    elif [ "$SYMFONY_VERSION" != "" ]; then
+      vendor-bin/symfony/vendor/bin/phpunit -c phpunit_symfony.xml.dist
+    else
+      vendor/bin/phpunit
+    fi
 
 notifications:
     email: false
