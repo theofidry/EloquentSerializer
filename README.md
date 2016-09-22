@@ -17,7 +17,7 @@ composer require theofidry/eloquent-serializer
 
 Supported version: ~5.2.30.
 
-Add the provider [`Fidry\EloquentSerializer\Illuminate\Provider\SerializerProvider`](src/Illuminate/Provider/SerializerProvider.php) to your application providers:
+Add the provider [`Fidry\EloquentSerializer\Bridge\Laravel\Provider\SerializerProvider`](src/Illuminate/Provider/SerializerProvider.php) to your application providers:
 
 ```php
 <?php
@@ -25,7 +25,7 @@ Add the provider [`Fidry\EloquentSerializer\Illuminate\Provider\SerializerProvid
 
 'providers' => [
     // ...
-    \Fidry\EloquentSerializer\Illuminate\Provider\SerializerProvider::class,
+    \Fidry\EloquentSerializer\Bridge\Laravel\Provider\SerializerProvider::class,
 ];
 ```
 
@@ -42,7 +42,7 @@ Enable the bundle by updating your `app/AppKernel.php` file to enable the bundle
 public function registerBundles()
 {
     //...
-    $bundles[] = new Fidry\EloquentSerializer\Symfony\Bundle\FidryEloquentSerializerBundle();
+    $bundles[] = new Fidry\EloquentSerializer\Bridge\Symfony\FidryEloquentSerializerBundle();
 
     return $bundles;
 }
@@ -51,7 +51,7 @@ public function registerBundles()
 ## Usage
 
 ```php
-use Fidry\EloquentSerializer\Illuminate\Facade\Serializer;
+use Fidry\EloquentSerializer\Bridge\Laravel\Facade\Serializer;
 
 // Dummy is an Eloquent model
 $dummy = Dummy::create([

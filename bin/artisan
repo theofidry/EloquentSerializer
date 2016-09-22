@@ -10,9 +10,9 @@
  * file that was distributed with this source code.
  */
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/../vendor-bin/laravel/vendor/autoload.php';
 
-$app = require_once __DIR__.'/../tests/Fixtures/LaravelApp/app.php';
+$app = require_once __DIR__.'/../fixtures/LaravelApp/app.php';
 $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
 
 $status = $kernel->handle(

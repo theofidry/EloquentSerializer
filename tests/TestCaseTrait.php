@@ -60,7 +60,7 @@ trait TestCaseTrait
         ];
     }
 
-    public function testNormalizeEloquentObject()
+    public function testCanNormalizeAnEloquentObject()
     {
         $dummy = Dummy::create([
             'id' => 100,
@@ -85,7 +85,7 @@ trait TestCaseTrait
         PHPUnit::assertSame($expected, $actual);
     }
 
-    public function testNormalizeEloquentObjectWithRelation()
+    public function testCanNormalizeAnEloquentObjectWithRelationships()
     {
         $anotherDummy = AnotherDummy::create([
             'id' => 200,
@@ -123,7 +123,7 @@ trait TestCaseTrait
         PHPUnit::assertSame($expected, $actual);
     }
 
-    public function testDenormalizeEloquentObject()
+    public function testCanDenormalizeAnEloquentObject()
     {
         $data = [
             'id' => 200,
@@ -148,7 +148,7 @@ trait TestCaseTrait
         PHPUnit::assertEquals(new Carbon('2016-07-02T12:28:14+00:00'), $dummy->created_at);
     }
 
-    public function testDenormalizeEloquentObjectWithNonHydratedRelation()
+    public function testCanDenormalizeEloquentAnObjectWithNonHydratedRelationships()
     {
         $data = [
             'id' => 200,
@@ -176,7 +176,7 @@ trait TestCaseTrait
         PHPUnit::assertEquals(0, count($dummy->getRelations()));
     }
 
-    public function testDenormalizeEloquentObjectWithRelation()
+    public function testCanDenormalizeAnEloquentObjectWithRelationships()
     {
         $data = [
             'id' => 200,

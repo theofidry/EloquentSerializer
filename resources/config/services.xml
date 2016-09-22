@@ -5,7 +5,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="fidry_eloquent_serializer.eloquent_property_accessor" class="Fidry\EloquentSerializer\Symfony\PropertyAccess\EloquentModelPropertyAccessor">
+        <service id="fidry_eloquent_serializer.eloquent_property_accessor" class="Fidry\EloquentSerializer\PropertyAccess\EloquentModelPropertyAccessor">
             <argument type="service" id="serializer.property_accessor" />
         </service>
 
@@ -13,13 +13,13 @@
             <tag name="serializer.normalizer" priority="-980" />
         </service>
 
-        <service id="fidry_eloquent_serializer.normalizer.eloquent_model" class="Fidry\EloquentSerializer\Symfony\Serializer\Normalizer\EloquentModelNormalizer">
+        <service id="fidry_eloquent_serializer.normalizer.eloquent_model" class="Fidry\EloquentSerializer\Serializer\Normalizer\EloquentModelNormalizer">
             <argument type="service" id="serializer.mapping.class_metadata_factory" />
             <argument>null</argument> <!-- name converter -->
             <argument type="service" id="fidry_eloquent_serializer.eloquent_property_accessor" />
 
-            <!-- Run after all custom serializers but before object normalizer -->
-            <tag name="serializer.normalizer" priority="-990" />
+            <!-- Run before Symfony normalizers to avoid for example JsonSerializableNormalizer -->
+            <tag name="serializer.normalizer" priority="-890" />
         </service>
     </services>
 </container>

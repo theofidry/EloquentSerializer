@@ -16,20 +16,30 @@
         "symfony/serializer": "^3.1"
     },
     "require-dev": {
-        "doctrine/dbal": "^2.5",
-        "laravel/framework": "^5.2.30",
-        "symfony/framework-bundle": "^2.8||^3.0",
-        "symfony/yaml": "^3.1",
-        "wouterj/eloquent-bundle": "^0.2.2"
+        "bamarni/composer-bin-plugin": "dev-master",
+        "phpunit/phpunit": "^5.2"
     },
     "autoload": {
         "psr-4": { "Fidry\\EloquentSerializer\\": "src" }
     },
     "autoload-dev": {
         "classmap": [
-            "tests/Fixtures/LaravelApp/database/migrations"
+            "fixtures/LaravelApp/database/migrations"
         ],
-        "psr-4": { "Fidry\\EloquentSerializer\\": "tests" }
+        "psr-4": {
+            "Fidry\\EloquentSerializer\\": [
+                "fixtures",
+                "tests"
+            ]
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "@composer bin all update --ansi"
+        ],
+        "post-install-cmd": [
+            "@composer bin all install --ansi"
+        ]
     },
     "config": {
         "sort-packages": true
