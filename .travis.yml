@@ -71,11 +71,11 @@ install:
 script:
   - |
     if [ "$LARAVEL_VERSION" != "" ]; then
-      vendor-bin/laravel/vendor/bin/phpunit -c phpunit_laravel.xml.dist
+      vendor-bin/laravel/vendor/phpunit/phpunit/phpunit -c phpunit_laravel.xml.dist
     elif [ "$SYMFONY_VERSION" != "" ]; then
-      vendor-bin/symfony/vendor/bin/phpunit -c phpunit_symfony.xml.dist
+      vendor-bin/symfony/vendor/phpunit/phpunit/phpunit -c phpunit_symfony.xml.dist
     else
-      vendor/bin/phpunit
+      vendor/phpunit/phpunit/phpunit
     fi
 
 notifications:

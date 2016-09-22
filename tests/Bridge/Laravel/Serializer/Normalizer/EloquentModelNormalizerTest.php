@@ -15,8 +15,6 @@ use Fidry\EloquentSerializer\Bridge\Laravel\FunctionalTestCase;
 use Fidry\EloquentSerializer\TestCaseTrait;
 
 /**
- * @group Laravel
- *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
 class EloquentModelNormalizerTest extends FunctionalTestCase

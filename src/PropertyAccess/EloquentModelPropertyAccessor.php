@@ -65,6 +65,6 @@ final class EloquentModelPropertyAccessor implements PropertyAccessorInterface
     
     public function __clone()
     {
-        $this->fallback = clone $this->fallback;
+        throw new \DomainException('You should not clone a service.');
     }
 }

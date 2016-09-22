@@ -15,8 +15,6 @@ use Fidry\EloquentSerializer\Bridge\Symfony\FunctionalTestCase;
 use Fidry\EloquentSerializer\TestCaseTrait;
 
 /**
- * @group Symfony
- *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
 class EloquentModelNormalizerTest extends FunctionalTestCase

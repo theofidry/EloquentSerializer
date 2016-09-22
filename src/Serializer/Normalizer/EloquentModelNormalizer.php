@@ -19,13 +19,20 @@ use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\PropertyInfo\PropertyTypeExtractorInterface;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
 class EloquentModelNormalizer extends ObjectNormalizer
 {
+    /**
+     * @var NormalizerInterface
+     */
+    protected $serializer;
+
     /**
      * @var PropertyAccessorInterface
      */
@@ -36,6 +43,9 @@ class EloquentModelNormalizer extends ObjectNormalizer
      */
     private $arrayablePropertiesRefl;
 
+    /**
+     * @inheritdoc
+     */
     public function __construct(
         ClassMetadataFactoryInterface $classMetadataFactory = null,
         NameConverterInterface $nameConverter = null,
@@ -51,6 +61,19 @@ class EloquentModelNormalizer extends ObjectNormalizer
         $this->arrayablePropertiesRefl = (new \ReflectionClass(EloquentModel::class))->getMethod('getArrayableItems');
         $this->arrayablePropertiesRefl->setAccessible(true);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function setSerializer(SerializerInterface $serializer)
+    {
+        if (false === $serializer instanceof NormalizerInterface) {
+            throw new \LogicException('Expected the serializer passed to be normalizer.');
+        }
+
+        parent::setSerializer($serializer);
+    }
+
 
     /**
      * {@inheritdoc}
@@ -131,5 +154,10 @@ class EloquentModelNormalizer extends ObjectNormalizer
     public function supportsDenormalization($data, $type, $format = null)
     {
         return is_subclass_of($type, EloquentModel::class, true);
+    }
+
+    public function __clone()
+    {
+        throw new \DomainException('You should not clone a service.');
     }
 }

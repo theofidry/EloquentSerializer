@@ -14,8 +14,6 @@ namespace Fidry\EloquentSerializer\Bridge\Laravel\Facade;
 use Fidry\EloquentSerializer\Bridge\Laravel\FunctionalTestCase;
 
 /**
- * @group Laravel
- *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
 class FacadeTest extends FunctionalTestCase

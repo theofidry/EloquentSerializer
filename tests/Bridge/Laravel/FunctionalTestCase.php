@@ -14,8 +14,6 @@ namespace Fidry\EloquentSerializer\Bridge\Laravel;
 use Illuminate\Foundation\Testing\TestCase as IlluminateTestCase;
 
 /**
- * @group Laravel
- *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
 abstract class FunctionalTestCase extends IlluminateTestCase

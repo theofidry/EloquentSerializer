@@ -14,8 +14,6 @@ namespace Fidry\EloquentSerializer\Bridge\Laravel\Provider;
 use Fidry\EloquentSerializer\Bridge\Laravel\FunctionalTestCase;
 
 /**
- * @group Laravel
- *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
 class SerializerProviderTest extends FunctionalTestCase

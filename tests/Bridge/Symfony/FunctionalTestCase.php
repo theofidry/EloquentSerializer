@@ -15,8 +15,6 @@ use Fidry\EloquentSerializer\SymfonyApp\AppKernel;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
- * @group Symfony
- *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
 abstract class FunctionalTestCase extends KernelTestCase
