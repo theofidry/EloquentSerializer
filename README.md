@@ -1,9 +1,11 @@
 # EloquentSerializer
 
 [![Package version](http://img.shields.io/packagist/v/theofidry/eloquent-serializer.svg?style=flat-square)](https://packagist.org/packages/theofidry/eloquent-serializer)
+[![Build Status](https://img.shields.io/travis/theofidry/EloquentSerializer.svg?branch=master&style=flat-square)](https://travis-ci.org/theofidry/EloquentSerializer?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](LICENSE)
 
 Package to allow [Symfony Serializer][1] to work on [Eloquent models][2].
+
 
 ## Install
 
@@ -13,9 +15,8 @@ You can use [Composer](https://getcomposer.org/) to install the bundle to your p
 composer require theofidry/eloquent-serializer
 ```
 
-### Laravel
 
-Supported version: ~5.2.30.
+### Laravel (^5.2.30)
 
 Add the provider [`Fidry\EloquentSerializer\Bridge\Laravel\Provider\SerializerProvider`](src/Illuminate/Provider/SerializerProvider.php) to your application providers:
 
@@ -29,9 +30,8 @@ Add the provider [`Fidry\EloquentSerializer\Bridge\Laravel\Provider\SerializerPr
 ];
 ```
 
-### Symfony
 
-Supported version: ~3.1 (not guaranteed yet)
+### Symfony (^3.1)
 
 Enable the bundle by updating your `app/AppKernel.php` file to enable the bundle:
 
@@ -47,6 +47,7 @@ public function registerBundles()
     return $bundles;
 }
 ```
+
 
 ## Usage
 
@@ -74,9 +75,6 @@ $normalizedDummy = Serializer::normalize($dummy);
 // ];
 ```
 
-## License
-
-[![license](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](LICENSE)
 
 [1]: http://symfony.com/doc/current/components/serializer.html
 [2]: https://laravel.com/docs/5.2/eloquent#eloquent-model-conventions
