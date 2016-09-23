@@ -9,6 +9,8 @@
 # file that was distributed with this source code.
 #
 
+set -ex
+
 rm -f fixtures/database.sqlite
 touch fixtures/database.sqlite
 php bin/artisan migrate
