@@ -25,6 +25,13 @@ final class SerializerProvider extends IlluminateServiceProvider
     public function register()
     {
         $this->registerTaggedService(
+            'serializer.encoder.json',
+            \Symfony\Component\Serializer\Encoder\JsonEncoder::class,
+            null,
+            ['serializer.encoder']
+        );
+
+        $this->registerTaggedService(
             'serializer.normalizer.date_time',
             \Symfony\Component\Serializer\Normalizer\DateTimeNormalizer::class,
             null,
