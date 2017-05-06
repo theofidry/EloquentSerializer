@@ -81,7 +81,7 @@ install:
       return
     fi
   - composer bin all update --prefer-dist --no-interaction $COMPOSER_FLAGS
-  - ./bin/setup
+  - bin/setup
 
 script:
   - |
