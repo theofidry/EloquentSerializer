@@ -64,7 +64,6 @@ matrix:
   fast_finish: true
 
 before_install:
-  - set -eo pipefail
   - phpenv config-rm xdebug.ini || true
   - |
     if [ "$TRAVIS_PHP_VERSION" = 'nightly' ]; then
