@@ -22,9 +22,11 @@ return [
     'providers' => [
         \Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
         \Illuminate\Database\DatabaseServiceProvider::class,
+        \Illuminate\Cache\CacheServiceProvider::class,
         \Illuminate\Filesystem\FilesystemServiceProvider::class,
         \Illuminate\Foundation\Providers\FoundationServiceProvider::class,
         \Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
+        \Illuminate\Queue\QueueServiceProvider::class,
         \Fidry\EloquentSerializer\Bridge\Laravel\Provider\SerializerProvider::class,
     ],
     'aliases' => [],

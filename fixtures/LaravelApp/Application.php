@@ -31,7 +31,7 @@ class Application extends IlluminateFoundationApplication
     /**
      * {@inheritdoc}
      */
-    public function configPath()
+    public function configPath($path = '')
     {
         return $this->basePath.DIRECTORY_SEPARATOR.'config';
     }
@@ -68,7 +68,7 @@ class Application extends IlluminateFoundationApplication
     /**
      * {@inheritdoc}
      */
-    public function path()
+    public function path($path = '')
     {
         return $this->basePath.DIRECTORY_SEPARATOR.'src';
     }
@@ -78,6 +78,6 @@ class Application extends IlluminateFoundationApplication
      */
     private function cachePath()
     {
-        return $this->basePath().'/cache';
+        return $this->basePath().'/var/cache';
     }
 }

@@ -7,6 +7,15 @@
 Package to allow [Symfony Serializer][1] to work on [Eloquent models][2].
 
 
+## Table of Contents
+
+1. [Install](#install)
+    1. [Laravel](#laravel-540)
+    1. [Symfony](#symfony-32)
+1. [Usage](#usage)
+1. [Contributing](#contributing)
+
+
 ## Install
 
 You can use [Composer](https://getcomposer.org/) to install the bundle to your project:
@@ -16,7 +25,7 @@ composer require theofidry/eloquent-serializer
 ```
 
 
-### Laravel (^5.2.30)
+### Laravel (~5.4.0)
 
 Add the provider [`Fidry\EloquentSerializer\Bridge\Laravel\Provider\SerializerProvider`](src/Illuminate/Provider/SerializerProvider.php) to your application providers:
 
@@ -31,7 +40,7 @@ Add the provider [`Fidry\EloquentSerializer\Bridge\Laravel\Provider\SerializerPr
 ```
 
 
-### Symfony (^3.1)
+### Symfony (^3.2)
 
 Enable the bundle by updating your `app/AppKernel.php` file to enable the bundle:
 
@@ -73,6 +82,27 @@ $normalizedDummy = Serializer::normalize($dummy);
 //     'email' => 'vbrekke@example.com',
 //     'created_at' => '2016-07-02T12:28:14+00:00',
 // ];
+```
+
+
+## Contributing
+
+1. Install the packages:
+
+```
+composer install; composer bin all install
+```
+
+2. Setup the sqlite database:
+
+```
+bin/setup
+```
+
+3. Run the tests for the core library and the framework bridges:
+
+```
+bin/tests
 ```
 
 
