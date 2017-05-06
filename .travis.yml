@@ -4,52 +4,68 @@ php:
   - '7.1'
   - nightly
 
+cache:
+  directories:
+    - "$HOME/.composer/cache/files"
+
+branches:
+  only:
+    - master
+
 matrix:
   include:
     # Laravel
     - php: '5.6'
       env:
-        - LARAVEL_VERSION='~5.2.30'
+        - LARAVEL_VERSION='~5.4.0'
+        - COMPOSER_FLAGS='--prefer-lowest'
+    - php: '5.6'
+      env: LARAVEL_VERSION='~5.4.0'
+    - php: '7.0'
+      env:
+        - LARAVEL_VERSION='~5.4.0'
         - COMPOSER_FLAGS='--prefer-lowest'
     - php: '7.0'
-      env: LARAVEL_VERSION='~5.2.0'
-    - php: '7.0'
-      env: LARAVEL_VERSION='~5.3.0@dev'
+      env: LARAVEL_VERSION='~5.4.0'
+    - php: '7.1'
+      env:
+        - LARAVEL_VERSION='~5.4.0'
+        - COMPOSER_FLAGS='--prefer-lowest'
+    - php: '7.1'
+      env: LARAVEL_VERSION='~5.4.0'
+    - php: '7.1'
+      env: LARAVEL_VERSION='~5.5.0@dev'
 
     # Symfony
     - php: '5.6'
       env:
-        - SYMFONY_VERSION='~3.1.0'
+        - SYMFONY_VERSION='~3.2.0'
+        - COMPOSER_FLAGS='--prefer-lowest'
+    - php: '5.6'
+      env: SYMFONY_VERSION='~3.2.0'
+    - php: '7.0'
+      env:
+        - SYMFONY_VERSION='~3.2.0'
         - COMPOSER_FLAGS='--prefer-lowest'
     - php: '7.0'
-      env: SYMFONY_VERSION='~3.2.0@dev'
+      env: SYMFONY_VERSION='~3.2.0'
+    - php: '7.1'
+      env:
+        - SYMFONY_VERSION='~3.2.0'
+        - COMPOSER_FLAGS='--prefer-lowest'
+    - php: '7.1'
+      env: SYMFONY_VERSION='~3.2.0'
+    - php: '7.1'
+      env: SYMFONY_VERSION='~3.3.0@dev'
   allow_failures:
     - php: nightly
-    - env: LARAVEL_VERSION='~5.3.0@dev'
-    - env: SYMFONY_VERSION='~3.2.0@dev'
+    - env: LARAVEL_VERSION='~5.5.0@dev'
+    - env: SYMFONY_VERSION='~3.3.0@dev'
   fast_finish: true
 
-cache:
-  directories:
-    - "$HOME/.composer/cache"
-
 before_install:
-  # From https://github.com/travis-ci/travis-ci/issues/5780#issuecomment-196308406
-  - |
-    XDEBUG_INI="/home/travis/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini"
-    if [ ! -f "$XDEBUG_INI" ]; then
-        return
-    fi
-    function composer()
-    {
-      mv $XDEBUG_INI ~/xdebug.ini
-      COMPOSER="$(which composer)"
-      $COMPOSER "$@"
-      STATUS=$?
-      mv ~/xdebug.ini $XDEBUG_INI
-
-      return $STATUS
-    }
+  - set -eo pipefail
+  - phpenv config-rm xdebug.ini || true
   - |
     if [ "$TRAVIS_PHP_VERSION" = 'nightly' ]; then
       COMPOSER_FLAGS="$COMPOSER_FLAGS --ingore-platform-reqs"
