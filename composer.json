@@ -34,7 +34,13 @@
             ]
         }
     },
+    "extra": {
+        "bamarni-bin": {
+            "bin-links": false
+        }
+    },
     "config": {
+        "bin-dir": "bin",
         "sort-packages": true
     }
 }

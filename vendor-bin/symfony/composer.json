@@ -3,5 +3,9 @@
         "symfony/symfony": "^3.1",
         "theofidry/composer-inheritance-plugin": "^1.0.",
         "wouterj/eloquent-bundle": "^1.0.0@dev"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true
     }
 }
