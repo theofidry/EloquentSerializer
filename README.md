@@ -1,6 +1,6 @@
 # EloquentSerializer
 
-[![Package version](http://img.shields.io/packagist/vpre/theofidry/eloquent-serializer.svg?style=flat-square)](https://packagist.org/packages/theofidry/eloquent-serializer)
+[![Package version](http://img.shields.io/packagist/v/theofidry/eloquent-serializer.svg?style=flat-square)](https://packagist.org/packages/theofidry/eloquent-serializer)
 [![Build Status](https://img.shields.io/travis/theofidry/EloquentSerializer.svg?branch=master&style=flat-square)](https://travis-ci.org/theofidry/EloquentSerializer?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](LICENSE)
 
@@ -107,4 +107,4 @@ bin/tests
 
 
 [1]: http://symfony.com/doc/current/components/serializer.html
-[2]: https://laravel.com/docs/5.2/eloquent#eloquent-model-conventions
+[2]: https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions
