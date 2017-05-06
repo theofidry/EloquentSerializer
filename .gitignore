@@ -4,5 +4,5 @@ fixtures/database.sqlite
 bin/
 !bin/artisan
 !bin/console
-!bin/setup.sh
-!bin/tests.sh
+!bin/setup
+!bin/tests
