@@ -15,7 +15,7 @@ use Carbon\Carbon;
 use Fidry\EloquentSerializer\Model\AnotherDummy;
 use Fidry\EloquentSerializer\Model\Dummy;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
-use PHPUnit_Framework_TestCase as PHPUnit;
+use PHPUnit\Framework\TestCase as PHPUnit;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
