@@ -11,6 +11,9 @@
 
 set -ex
 
+composer install
+composer bin all install
+
 rm -f fixtures/database.sqlite
 touch fixtures/database.sqlite
 php bin/artisan migrate

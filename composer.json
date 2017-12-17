@@ -10,14 +10,14 @@
     ],
     "type": "laravel-provider",
     "require": {
-        "php": ">=5.6.0 <7.2",
-        "illuminate/database": "^5.4",
-        "symfony/property-access": "^2.8||^3.0",
-        "symfony/property-info": "^2.8||^3.0",
-        "symfony/serializer": "^3.1"
+        "php": "^7.1",
+        "illuminate/database": "~5.5.0",
+        "symfony/property-access": "^3.4 || ^4.0",
+        "symfony/property-info": "^3.4 || ^4.0",
+        "symfony/serializer": "^3.4 || ^4.0"
     },
     "require-dev": {
-        "bamarni/composer-bin-plugin": "dev-master",
+        "bamarni/composer-bin-plugin": "^1.0",
         "phpunit/phpunit": "^5.6"
     },
     "autoload": {

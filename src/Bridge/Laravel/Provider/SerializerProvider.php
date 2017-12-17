@@ -32,15 +32,36 @@ final class SerializerProvider extends IlluminateServiceProvider
         );
 
         $this->registerTaggedService(
-            'serializer.normalizer.date_time',
-            \Symfony\Component\Serializer\Normalizer\DateTimeNormalizer::class,
+            'serializer.normalizer.eloquent_model',
+            \Fidry\EloquentSerializer\Serializer\Normalizer\EloquentModelNormalizer::class,
             null,
             ['serializer.normalizer']
         );
 
         $this->registerTaggedService(
-            'serializer.normalizer.eloquent_model',
-            \Fidry\EloquentSerializer\Serializer\Normalizer\EloquentModelNormalizer::class,
+            'serializer.normalizer.json_serializable',
+            \Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer::class,
+            null,
+            ['serializer.normalizer']
+        );
+
+        $this->registerTaggedService(
+            'serializer.normalizer.dateinterval',
+            \Symfony\Component\Serializer\Normalizer\DateIntervalNormalizer::class,
+            null,
+            ['serializer.normalizer']
+        );
+
+        $this->registerTaggedService(
+            'serializer.normalizer.data_uri',
+            \Symfony\Component\Serializer\Normalizer\DataUriNormalizer::class,
+            null,
+            ['serializer.normalizer']
+        );
+
+        $this->registerTaggedService(
+            'serializer.normalizer.date_time',
+            \Symfony\Component\Serializer\Normalizer\DateTimeNormalizer::class,
             null,
             ['serializer.normalizer']
         );

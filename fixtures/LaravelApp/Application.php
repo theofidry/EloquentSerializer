@@ -60,6 +60,14 @@ class Application extends IlluminateFoundationApplication
         return $this->cachePath().'/services.php';
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getCachedPackagesPath()
+    {
+        return $this->cachePath().'/packages.php';
+    }
+
     public function langPath()
     {
         return '';

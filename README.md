@@ -87,23 +87,13 @@ $normalizedDummy = Serializer::normalize($dummy);
 
 ## Contributing
 
-1. Install the packages:
+You can find two bash scripts to help with the testing:
 
 ```
-composer install; composer bin all install
+bin/setup   # Install the dependencies and setup the sqlite database
+bin/tests   # Runs the tests
 ```
 
-2. Setup the sqlite database:
-
-```
-bin/setup
-```
-
-3. Run the tests for the core library and the framework bridges:
-
-```
-bin/tests
-```
 
 
 [1]: http://symfony.com/doc/current/components/serializer.html
