@@ -10,8 +10,8 @@ Package to allow [Symfony Serializer][1] to work on [Eloquent models][2].
 ## Table of Contents
 
 1. [Install](#install)
-    1. [Laravel](#laravel-540)
-    1. [Symfony](#symfony-32)
+    1. [Laravel](#laravel-550)
+    1. [Symfony](#symfony-3440)
 1. [Usage](#usage)
 1. [Contributing](#contributing)
 
@@ -25,22 +25,12 @@ composer require theofidry/eloquent-serializer
 ```
 
 
-### Laravel (~5.4.0)
+### Laravel (~5.5.0)
 
-Add the provider [`Fidry\EloquentSerializer\Bridge\Laravel\Provider\SerializerProvider`](src/Illuminate/Provider/SerializerProvider.php) to your application providers:
-
-```php
-<?php
-// config/app.php
-
-'providers' => [
-    // ...
-    \Fidry\EloquentSerializer\Bridge\Laravel\Provider\SerializerProvider::class,
-];
-```
+Nothing to do, the provider is automatically discovered :)
 
 
-### Symfony (^3.2)
+### Symfony (^3.4 || ^4.0)
 
 Enable the bundle by updating your `app/AppKernel.php` file to enable the bundle:
 
@@ -51,7 +41,7 @@ Enable the bundle by updating your `app/AppKernel.php` file to enable the bundle
 public function registerBundles()
 {
     //...
-    $bundles[] = new Fidry\EloquentSerializer\Bridge\Symfony\FidryEloquentSerializerBundle();
+    $bundles[] = new \Fidry\EloquentSerializer\Bridge\Symfony\FidryEloquentSerializerBundle();
 
     return $bundles;
 }

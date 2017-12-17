@@ -37,6 +37,11 @@
     "extra": {
         "bamarni-bin": {
             "bin-links": false
+        },
+        "laravel": {
+            "providers": [
+                "Fidry\EloquentSerializer\\Bridge\\Laravel\\Provider\\SerializerProvider"
+            ]
         }
     },
     "config": {
