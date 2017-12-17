@@ -15,7 +15,7 @@ use Carbon\Carbon;
 use Fidry\EloquentSerializer\Model\AnotherDummy;
 use Fidry\EloquentSerializer\Model\Dummy;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
-use PHPUnit_Framework_TestCase as PHPUnit;
+use PHPUnit\Framework\TestCase as PHPUnit;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -77,9 +77,14 @@ trait TestCaseTrait
             'name' => 'Gunner Runte',
             'email' => 'vbrekke@example.com',
             'casted_bool' => true,
-            'created_at' => '2016-07-02T12:28:14+00:00',
+            'created_at' => [
+                'date' => '2016-07-02 12:28:14.000000',
+                'timezone_type' => 3,
+                'timezone' => 'UTC',
+            ],
             'inexistent_visible_property' => null,
         ];
+
         $actual = $this->serializer->normalize($dummy);
 
         PHPUnit::assertSame($expected, $actual);
@@ -101,7 +106,7 @@ trait TestCaseTrait
             'email' => 'amanda.harber@example.com',
             'password' => '$2y$10$Rv56QfRBQhO39Pl2igknIOlyXRiOPjipskQKr.S9HcvhkwfyiNNFC',
             'remember_token' => 'JyeiFq4y3C',
-            'created_at' => new Carbon('2016-07-02 12:28:14'),
+            'created_at' => new Carbon('2016-07-02T12:28:14+00:00'),
         ]);
         $dummy->anotherDummy()->associate($anotherDummy);
         $dummy->save();
@@ -111,7 +116,11 @@ trait TestCaseTrait
             'name' => 'Dr. Eldred Kuvalis PhD',
             'email' => 'amanda.harber@example.com',
             // 'casted_bool' => null
-            'created_at' => '2016-07-02T12:28:14+00:00',
+            'created_at' => [
+                'date' => '2016-07-02 12:28:14.000000',
+                'timezone_type' => 3,
+                'timezone' => 'UTC',
+            ],
             'inexistent_visible_property' => null,
             'anotherDummy' => [
                 'id' => 200,
@@ -132,7 +141,7 @@ trait TestCaseTrait
             'casted_bool' => 0,
             'password' => '$2y$10$j/R4kRrymk3wMXwohvoRou2zBKJZVecr1VON.9NnSXu24k6CP6tDe',
             'remember_token' => 'PhiasHkmCh',
-            'created_at' => '2016-07-02T12:28:14+00:00',
+            'created_at' => '2016-07-02T12:28:14+00:00'
         ];
 
         /** @var Dummy $dummy */

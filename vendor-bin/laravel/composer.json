@@ -1,6 +1,6 @@
 {
     "require-dev": {
-        "laravel/framework": "^5.4",
+        "laravel/framework": "~5.5.0",
         "theofidry/composer-inheritance-plugin": "^1.0"
     },
     "config": {

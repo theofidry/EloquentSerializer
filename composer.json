@@ -9,17 +9,19 @@
         }
     ],
     "type": "laravel-provider",
+
     "require": {
-        "php": ">=5.6.0 <7.2",
-        "illuminate/database": "^5.4",
-        "symfony/property-access": "^2.8||^3.0",
-        "symfony/property-info": "^2.8||^3.0",
-        "symfony/serializer": "^3.1"
+        "php": "^7.1",
+        "illuminate/database": "~5.5.0",
+        "symfony/property-access": "^3.4 || ^4.0",
+        "symfony/property-info": "^3.4 || ^4.0",
+        "symfony/serializer": "^3.4 || ^4.0"
     },
     "require-dev": {
-        "bamarni/composer-bin-plugin": "dev-master",
-        "phpunit/phpunit": "^5.6"
+        "bamarni/composer-bin-plugin": "^1.0",
+        "phpunit/phpunit": "^6.4"
     },
+
     "autoload": {
         "psr-4": { "Fidry\\EloquentSerializer\\": "src" }
     },
@@ -34,9 +36,15 @@
             ]
         }
     },
+
     "extra": {
         "bamarni-bin": {
             "bin-links": false
+        },
+        "laravel": {
+            "providers": [
+                "Fidry\\EloquentSerializer\\Bridge\\Laravel\\Provider\\SerializerProvider"
+            ]
         }
     },
     "config": {

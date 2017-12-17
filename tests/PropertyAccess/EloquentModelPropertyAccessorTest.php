@@ -12,14 +12,17 @@
 namespace Fidry\EloquentSerializer\PropertyAccess;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
-use PHPUnit_Framework_Assert as PHPUnit;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Assert as PHPUnit;
 use Prophecy\Argument;
+use ReflectionClass;
+use stdClass;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class EloquentModelPropertyAccessorTest extends \PHPUnit_Framework_TestCase
+class EloquentModelPropertyAccessorTest extends TestCase
 {
     public function testIsAPropertyAccessor()
     {
@@ -28,7 +31,7 @@ class EloquentModelPropertyAccessorTest extends \PHPUnit_Framework_TestCase
 
     public function testIsNotExtendable()
     {
-        $classRefl = new \ReflectionClass(EloquentModelPropertyAccessor::class);
+        $classRefl = new ReflectionClass(EloquentModelPropertyAccessor::class);
         PHPUnit::assertTrue($classRefl->isFinal());
     }
 
@@ -46,11 +49,13 @@ class EloquentModelPropertyAccessorTest extends \PHPUnit_Framework_TestCase
         new EloquentModelPropertyAccessor(new FakePropertyAccess());
 
         try {
-            new EloquentModelPropertyAccessor(new \stdClass());
+            new EloquentModelPropertyAccessor(new stdClass());
             $this->fail('Expected to fail.');
         } catch (\TypeError $e) {
             // Expected result
         }
+
+        PHPUnit::assertTrue(true);
     }
 
     /**
@@ -126,7 +131,7 @@ class EloquentModelPropertyAccessorTest extends \PHPUnit_Framework_TestCase
     public function provideNonModel()
     {
         yield 'array' => [[]];
-        yield 'stdClass' => [new \stdClass()];
+        yield 'stdClass' => [new stdClass()];
     }
 }
 
