@@ -9,6 +9,7 @@
         }
     ],
     "type": "laravel-provider",
+
     "require": {
         "php": "^7.1",
         "illuminate/database": "~5.5.0",
@@ -18,8 +19,9 @@
     },
     "require-dev": {
         "bamarni/composer-bin-plugin": "^1.0",
-        "phpunit/phpunit": "^5.6"
+        "phpunit/phpunit": "^6.4"
     },
+
     "autoload": {
         "psr-4": { "Fidry\\EloquentSerializer\\": "src" }
     },
@@ -34,13 +36,14 @@
             ]
         }
     },
+
     "extra": {
         "bamarni-bin": {
             "bin-links": false
         },
         "laravel": {
             "providers": [
-                "Fidry\EloquentSerializer\\Bridge\\Laravel\\Provider\\SerializerProvider"
+                "Fidry\\EloquentSerializer\\Bridge\\Laravel\\Provider\\SerializerProvider"
             ]
         }
     },
