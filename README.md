@@ -11,7 +11,7 @@ Package to allow [Symfony Serializer][1] to work on [Eloquent models][2].
 
 1. [Install](#install)
     1. [Laravel](#laravel-550)
-    1. [Symfony](#symfony-3440)
+    1. [Symfony](#symfony-34--40)
 1. [Usage](#usage)
 1. [Contributing](#contributing)
 
